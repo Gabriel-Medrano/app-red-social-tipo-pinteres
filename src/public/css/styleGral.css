@@ -1,0 +1,161 @@
+* {
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background-color: rgb(62, 130, 170);
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.form-mediano {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.icon-miniature {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.icon-mediano {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.section-publications {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+.card-mediano img{
+    width: 200px;
+    max-height: 500px;
+    margin: 2px;
+    border-radius: 10px;
+}
+
+.section-publication {
+    max-width: 500px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.26);
+}
+
+.buttoms-end {
+    text-align:right;
+    margin-right: 10px;
+}
+
+.caja-comments {
+    max-width: 500px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.26);
+    padding: 10px;
+}
+
+.caja-autor:hover {
+    background: linear-gradient(10deg, rgba(2, 0, 36, 0.61) 0%, rgba(9, 121, 104, 0.233) 33%, rgba(0, 255, 30, 0.267) 100%) ;
+}
+
+/* user */
+.header-user {
+    color: #e6dfd4;
+    margin-bottom: 50px;
+}
+
+.header-first {
+   text-align: center;
+   position: relative;
+   z-index: 0;
+}
+.header-first img {
+    width: 100%;
+    max-height: 400px;
+}
+
+.header-second {
+    text-align: center;
+    margin: auto;
+    margin-top: -50px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+}
+
+.header-second .icon {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.perfil-icon-live {
+    position: absolute;
+    width: 25px;
+    border-radius: 50%;
+    bottom: -10px;
+    right: -10px;
+}
+
+/* Then User */
+
+.section-body {
+    display: grid;
+    grid-template-columns: auto 490px auto;
+}
+
+.search-gral {
+    background-color: rgba(60, 66, 66, 0.705);
+    position: absolute;
+    max-width: 200px;
+    z-index: 1;
+}
+
+.search-gral .caja-users {
+    padding: 0;
+}
+
+.reaction-btn {
+    cursor: pointer;
+    max-width: 100px;
+    position: absolute;
+    right: 10px;
+}
+
+.cursor_div {
+    cursor: pointer;
+}
+
+.edit_comment {
+    background-color: rgba(0, 0, 0, 0.527);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#caja_Msgs {
+    position: fixed;
+    top: 0;
+    z-index: 5;
+}
+
+@media only screen and (max-width: 500px) {
+    .section-body {
+        grid-template-columns: auto;
+    }
+}

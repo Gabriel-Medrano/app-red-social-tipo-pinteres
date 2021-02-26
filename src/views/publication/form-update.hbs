@@ -1,0 +1,22 @@
+<div>
+    <form action="" method="post" class="form-mediano">
+        <div class="section-publication text-center card p-4">
+            <div class="card-mediano">
+                <img src="{{publication.multimedia.path}}" alt="">
+            </div>
+        </div>
+        <div class="form-group my-2">
+            <input type="text" class="form-control" name="title" value="{{publication.title}}" placeholder="Enter the title" autofocus required>
+        </div>
+        <div class="form-group my-2">
+            <input type="text" class="form-control" name="sub_title" value="{{publication.sub_title}}" placeholder="Enter subtitle">
+        </div>
+        <div class="form-group my-2">
+            <input type="text" class="form-control" name="description" value="{{publication.description}}" placeholder="Enter the description">
+        </div>
+  
+        <div class="form-group my-2">
+            <button type="submit" class="btn btn-info">Update</button>
+        </div>
+    </form>
+</div>

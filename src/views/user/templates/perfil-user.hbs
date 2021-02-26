@@ -1,0 +1,64 @@
+<div>
+    <div class="header-user">
+        <div class="header-first">
+              {{#if perfilUser.valiMe}}
+                <a href="/perfil/{{perfilUser.nick_name}}/fondo">
+                    <img src="{{perfilUser.fondo}}" alt="">
+                </a>
+                {{else}}
+                    <img src="{{perfilUser.fondo}}" alt="">
+                {{/if}}
+        </div>
+        <section class="header-second">
+            {{#if perfilUser.sessionActiva}}
+                <div class="caja-live">
+                    <img src="{{perfilUser.icon}}" alt="" class="icon">
+                    <img src="/img/icon/live.png" alt="" class="perfil-icon-live">
+                </div>
+            {{else}}
+            <div>
+                {{#if perfilUser.valiMe}}
+                <a href="/perfil/{{perfilUser.nick_name}}/icon">
+                    <img src="{{perfilUser.icon}}" alt="" class="icon">
+                </a>
+                {{else}}
+                    <img src="{{perfilUser.icon}}" alt="" class="icon">
+                {{/if}}
+                <div class="">
+                    <div class="mb-2">
+                        <p class="m-0">{{perfilUser.nick_name}}</p>
+                        {{!-- <p class="m-0">{{timeAgo perfilUser.createdAt}}</p> --}}
+                        <p class="w-50 my-3 mx-auto">{{perfilUser.description}}</p>
+                        <p class="">followers: {{perfilUser.totalMiembros}}</p>
+                    </div>
+                    {{#if perfilUser.valiMe}}
+                    {{else}}
+                    <form action="/perfil/follow" method="post">
+                        <input type="hidden" name="nickName" value="{{perfilUser.nick_name}}">
+                        {{#if perfilUser.mePosition}}
+                        <button class="btn btn-danger">Stop Follow</button>
+                        {{else}}
+                        <button class="btn btn-danger">Follow</button>
+                        {{/if}}
+                    </form>
+                    {{/if}}
+                </div>
+            </div>
+            {{/if}}
+        </section>
+     
+    <div class="section-body">
+        <div> </div>
+
+        <div class="section-publications">
+            {{#each perfilUser.publications}}
+            <div class="card-mediano">
+                <a href="/publication/{{_id}}">
+                    <img src="{{multimedia.path}}" alt="">
+                </a>
+            </div>
+            {{/each}}
+        </div>
+        <div> </div>
+    </div>
+</div>

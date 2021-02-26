@@ -1,0 +1,102 @@
+<div class="my-5">
+    {{#if viewPubli.valiUser}}
+    <div class="mb-5 buttoms-end">
+        <a href="/publication/edit/{{viewPubli._id}}" class="btn-sm btn-success">Update</a>
+        <a href="/publication/delete/{{viewPubli._id}}" class="btn-sm btn-danger">Delete</a>
+    </div>
+    {{/if}}
+
+    <div class="section-publication text-center card p-4">
+        <div class="text-right">
+            <input type="hidden" value="{{viewPubli._id}}" id="id_publi">
+            {{#if viewPubli.meReaction}}
+            <div  id="like_publication" class="reaction-btn">
+                <i class="fas fa-heart"></i> 
+                <span class="small">{{viewPubli.reactions}}</span>
+            </div>
+            {{else}}
+            <div id="like_publication" class="reaction-btn">
+                <i class="far fa-heart"></i>
+                <span class="small">{{viewPubli.reactions}}</span>
+            </div>
+            {{/if}}
+        </div>
+        <div class="card-mediano">
+            <img src="{{viewPubli.multimedia.path}}" alt="">
+            <p>{{timeAgo viewPubli.createdAt}}</p>
+        </div>
+        <div class="card w-50 my-1 mx-auto bg-info">
+            <a href="/perfil/{{viewPubli.user.nick_name}}" class="d-flex p-1 caja-autor">
+                <img src="{{viewPubli.user.icon}}" alt="" class="icon-miniature">
+                <div class="small pl-2">
+                    <p class="m-0">{{viewPubli.user.nick_name}}</p>
+                    <p class="m-0">{{viewPubli.user.email}}</p>
+                </div>
+            </a>
+        </div>
+        <div class="card-body">
+            <h5>{{viewPubli.title}}</h5>
+            <h6>{{viewPubli.sub_title}}</h6>
+            <p class="text-justify mt-5">{{viewPubli.description}}</p>
+        </div>
+    </div>
+
+    <div class="section-comments">
+        <form action="/comment/create" method="post" class="form-mediano pb-1">
+            <div id="writing"></div>
+            <input type="hidden" name="puId" id="puId" value="{{viewPubli._id}}">
+            <div class="form-group">
+                <input type="text" class="form-control" name="description" id="description_comment" placeholder="Enter the description">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-info" id="btn_create_comment">Send</button>
+            </div>
+        </form>
+     
+        <div class="caja-comments" id="caja-comments">   
+        {{#each viewPubli.comments}}
+            <div class="card my-2">
+                <div class="d-flex py-1">
+                    <img src="{{user.icon}}" alt="" class="icon-miniature">
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="small ml-2">
+                            <a href="/perfil/{{user.nick_name}}" class="mb-1 text-info">{{user.nick_name}}</a>
+                            <p class="my-0 mr-2 text-justify">{{description}}</p>
+                            <p class="small mt-2 text-secondary">{{timeAgo createdAt}}</p>
+                        </div>
+                        {{#if commentUser}}
+                        <div class="mr-2">
+                            <input type="hidden" value="{{_id}}" class="idCmnt">
+                            <div class="btn-sm btn-info cursor_div" onclick="viewComment(this)">view</div>
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div class="text-righ mr-2">
+                        <input type="hidden" value="{{_id}}" class="id_comment">
+                        {{#if meReaction}}
+                        <div  class="like_comment cursor_div" onclick="likeComment(this)">
+                            <i class="fas fa-heart"></i> 
+                            <p class="small text-center m-0">{{reactions}}</p>
+                        </div>
+                        {{else}}
+                        <div  class="like_comment cursor_div" onclick="likeComment(this)">
+                            <i class="far fa-heart"></i> 
+                            <p class="small text-center m-0">{{reactions}}</p>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+    </div>
+</div>
+
+<div class="section-oculta">
+    <div class="edit_comment " id="open_form_cmnt"> </div>
+</div>
+
+{{!-- Socket.io --}}
+<script src="/socket.io/socket.io.js" charset="utf-8"></script>
+{{!-- CUSTOM --}}
+<script src="/js/jsPubli.js" type="text/javascript"></script>
